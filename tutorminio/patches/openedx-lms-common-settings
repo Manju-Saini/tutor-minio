@@ -20,6 +20,6 @@ class MinIOStorage(S3Boto3Storage):  # pylint: disable=abstract-method
 
 PROFILE_IMAGE_BACKEND = {
     "class": f"{__name__}.MinIOStorage",
-    "location": PROFILE_IMAGE_BACKEND["options"]["location"].lstrip("/"),
+#    "location": PROFILE_IMAGE_BACKEND["options"]["location"].lstrip("/"),
     "options": {},
     }
