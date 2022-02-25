@@ -1,5 +1,12 @@
 # LMS-specific media storage
-PROFILE_IMAGE_BACKEND = {
-    "class": USER_TASKS_ARTIFACT_STORAGE,
-    "options": PROFILE_IMAGE_BACKEND["options"],
-}
+#PROFILE_IMAGE_BACKEND = {
+#    "class": USER_TASKS_ARTIFACT_STORAGE,
+#    "options": PROFILE_IMAGE_BACKEND["options"],
+#}
+
+from storages.backends.s3boto3 import S3Boto3Storage
+class MediaStorage(S3Boto3Storage):
+    bucket_name = "{{ MINIO_BUCKET_NAME }}",
+    location = PROFILE_IMAGE_BACKEND["options"]["location"]
+
+PROFILE_IMAGE_BACKEND = f"{__name__}.MediaStorage"
