@@ -1,9 +1,5 @@
 # LMS-specific media storage
 PROFILE_IMAGE_BACKEND = {
     "class": USER_TASKS_ARTIFACT_STORAGE,
-    "options": {
-        # "location": PROFILE_IMAGE_BACKEND["options"]["location"].lstrip("/"),
-        # the following non empty property is necessary in development
-        "base_url": "dummyprofileimagebaseurl",
-    },
+    "options": PROFILE_IMAGE_BACKEND["options"],
 }
