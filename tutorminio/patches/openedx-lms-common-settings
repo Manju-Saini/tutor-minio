@@ -30,6 +30,6 @@ class MinIOStorage(S3Boto3Storage):  # pylint: disable=abstract-method
       "headers": {
         "Cache-Control": "max-age-{{ PROFILE_IMAGE_MAX_AGE }}"
       },
-      "location": "{{ MINIO_FILE_UPLOAD_BUCKET_NAME }}/profile-images"
+      "location": "{{ MINIO_BUCKET_NAME  }}/profile-images"
     }
 }
