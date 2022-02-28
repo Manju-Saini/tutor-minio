@@ -24,7 +24,7 @@ class MinIOStorage(S3Boto3Storage):  # pylint: disable=abstract-method
 #    }
     
 #PROFILE_IMAGE_BACKEND["class"] = f"{__name__}.MinIOStorage"
-"PROFILE_IMAGE_BACKEND": {
+PROFILE_IMAGE_BACKEND = {
     "class": "storages.backends.s3boto.S3BotoStorage",
     "options": {
       "location": "{{ MINIO_BUCKET_NAME  }}/profile-images"
