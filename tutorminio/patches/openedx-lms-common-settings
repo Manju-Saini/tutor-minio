@@ -1,13 +1,4 @@
 # LMS-specific media storage
-PROFILE_IMAGE_BACKEND = {
-    "class": DEFAULT_FILE_STORAGE,
-    "options": {
-        "location": PROFILE_IMAGE_BACKEND["options"]["location"].lstrip("/"),
-        # the following non empty property is necessary in development
-        "base_url": "dummyprofileimagebaseurl",
-    },
-}
-
 #from storages.backends.s3boto3 import S3Boto3Storage
 #class MediaStorage(S3Boto3Storage):
 #    bucket_name = "{{ MINIO_BUCKET_NAME }}",
@@ -15,17 +6,17 @@ PROFILE_IMAGE_BACKEND = {
 
 #PROFILE_IMAGE_BACKEND = f"{__name__}.MediaStorage"
 
-#from storages.backends.s3boto3 import S3Boto3Storage
-#class MinIOStorage(S3Boto3Storage):  # pylint: disable=abstract-method
-#    def __init__(self):
-#        bucket = "{{ MINIO_BUCKET_NAME }}"
-#        super().__init__(bucket=bucket, custom_domain=None, querystring_auth=True)
+from storages.backends.s3boto3 import S3Boto3Storage
+class MinIOStorage(S3Boto3Storage):  # pylint: disable=abstract-method
+    def __init__(self):
+        bucket = "{{ MINIO_BUCKET_NAME }}"
+        super().__init__(bucket=bucket, custom_domain=None, querystring_auth=True)
 
 
-#PROFILE_IMAGE_BACKEND = {
-#    "class": f"{__name__}.MinIOStorage",
-#    "options": {},
-#    }
+PROFILE_IMAGE_BACKEND = {
+    "class": f"{__name__}.MinIOStorage",
+    "options": {},
+    }
     
 #PROFILE_IMAGE_BACKEND["class"] = f"{__name__}.MinIOStorage"
 
