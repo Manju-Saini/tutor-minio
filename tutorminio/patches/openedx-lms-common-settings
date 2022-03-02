@@ -6,15 +6,15 @@
 
 #PROFILE_IMAGE_BACKEND = f"{__name__}.MediaStorage"
 
-from storages.backends.s3boto3 import S3Boto3Storage
-class MinIOStorage(S3Boto3Storage):  # pylint: disable=abstract-method
-    def __init__(self):
-        bucket = "{{ MINIO_BUCKET_NAME }}"
-        super().__init__(bucket=bucket, custom_domain=None, querystring_auth=True)
+#from storages.backends.s3boto3 import S3Boto3Storage
+#class MinIOStorage(S3Boto3Storage):  # pylint: disable=abstract-method
+#    def __init__(self):
+#        bucket = "{{ MINIO_BUCKET_NAME }}"
+#        super().__init__(bucket=bucket, custom_domain=None, querystring_auth=True)
 
 
 PROFILE_IMAGE_BACKEND = {
-    "class": f"{__name__}.MinIOStorage",
+    "class": "storages.backends.s3boto.S3BotoStorage",
     "options": {},
     }
     
